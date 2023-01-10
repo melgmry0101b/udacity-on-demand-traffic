@@ -15,6 +15,7 @@
 //	embraces portability and reduces errors copying addresses from the
 //	datasheets and fiddling around with `*(volatile uint8_t*)`.
 #include <avr/io.h>
+#include <avr/interrupt.h>
 
 /************************************************************************/
 /* Include our drivers                                                  */
