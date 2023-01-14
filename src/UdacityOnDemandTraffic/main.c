@@ -5,6 +5,7 @@
  * Author : Mohammed Elghamry <elghamry.connect[at]outlook[dot]com>
  */
 
+#include "framework.h"
 #include "Application/application.h"
 
 int main(void)
