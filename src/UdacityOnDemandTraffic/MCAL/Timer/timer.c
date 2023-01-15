@@ -99,8 +99,8 @@ void TIMER0_set(uint16_t ms)
 // =======================================
 void TIMER0_start(void)
 {
-	// Start the timer in normal mode with 256 prescalar.
-	SET_BIT(TCCR0, CS02);
+	// Start the timer in normal mode with 1024 prescalar.
+	TCCR0 = (1 << CS02) | (1 << CS00);
 	
 	// Set the status
 	g_timer0State = TIMER_RUNNING;

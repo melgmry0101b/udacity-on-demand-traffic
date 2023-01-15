@@ -12,13 +12,13 @@
 /* Defines                                                              */
 /************************************************************************/
 
-// We are using Timer0 in normal mode with 256 prescalar and a 1 MHz CPU Clock,
+// We are using Timer0 in normal mode with 1024 prescalar and a 1 MHz CPU Clock,
 //	we should calculate this dynamically or use compile time constant expressions (C++),
 //	but for the sake of brevity, we will hard code the values.
-#define TIMER0_TICK 0.256 // ms
+#define TIMER0_TICK 1.024 // ms
 
 // This is the max delay for TIMER0 in ms.
-#define TIMER0_MAX 65.536 // ms
+#define TIMER0_MAX 262.144 // ms
 
 /************************************************************************/
 /* Types                                                                */
