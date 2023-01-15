@@ -20,10 +20,16 @@ static BUTTON_CALLBACK g_buttonInt0Callback = NULL;
 
 ISR(INT0_vect)
 {
+	// Disable interrupts
+	cli();
+	
 	if (g_buttonInt0Callback)
 	{
 		(*g_buttonInt0Callback)();
 	}
+	
+	// Enable interrupts
+	sei();
 }
 
 /************************************************************************/

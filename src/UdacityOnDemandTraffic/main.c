@@ -10,8 +10,14 @@
 
 int main(void)
 {
+	APP_init();
+	
+	// Enable interrupts for the processing.
+	sei();
+	
     /* Replace with your application code */
     while (1)
     {
+		APP_process();
     }
 }

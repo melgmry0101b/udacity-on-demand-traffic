@@ -24,10 +24,14 @@ static TIMER_STATE g_timer0State = TIMER_STOPPED;
 
 ISR(TIMER0_OVF_vect)
 {
+	// Disable interrupts
+	cli();
+	
 	// if we are already at 0 required overflows, stop the timer
 	if (g_requiredOverflows == 0)
 	{
 		TIMER0_stop();
+		sei(); // Re-enable interrupts
 		return; // The compiler will do the proper ISR clean up here.
 	}
 	
@@ -35,6 +39,7 @@ ISR(TIMER0_OVF_vect)
 	if (--g_requiredOverflows == 0)
 	{
 		TIMER0_stop();
+		sei(); // Re-enable interrupts
 		return; // The compiler will do the proper ISR clean up here.
 	}
 }

@@ -18,6 +18,7 @@
 void LED_init(PIN_PORT port, uint8_t pin)
 {
 	DIO_init(port, pin, PIN_MODE_OUT);
+	LED_off(port, pin); // Make sure initialized LED is low
 }
 
 // =======================================
