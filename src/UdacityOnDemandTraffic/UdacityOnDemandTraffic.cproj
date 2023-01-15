@@ -189,12 +189,6 @@
     <Compile Include="MCAL\DIO\dio.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\Interrupts\interrupts.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="MCAL\Interrupts\interrupts.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="MCAL\mcal.h">
       <SubType>compile</SubType>
     </Compile>
@@ -213,7 +207,6 @@
     <Folder Include="MCAL" />
     <Folder Include="ECUAL" />
     <Folder Include="MCAL\DIO" />
-    <Folder Include="MCAL\Interrupts" />
     <Folder Include="MCAL\Timer" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

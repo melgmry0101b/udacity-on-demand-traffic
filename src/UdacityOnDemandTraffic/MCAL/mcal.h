@@ -12,7 +12,6 @@
 /* Include our drivers                                                  */
 /************************************************************************/
 #include "DIO/dio.h"
-#include "Interrupts/interrupts.h"
 #include "Timer/timer.h"
 
 #endif /* MCAL_H_ */
