@@ -9,15 +9,6 @@
 #define MCAL_H_
 
 /************************************************************************/
-/* Include the standard `io.h` provided for avr                         */
-/************************************************************************/
-// I opted into using `io.h` rather defining my own `registers.h` as this
-//	embraces portability and reduces errors copying addresses from the
-//	datasheets and fiddling around with `*(volatile uint8_t*)`.
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
-/************************************************************************/
 /* Include our drivers                                                  */
 /************************************************************************/
 #include "DIO/dio.h"
