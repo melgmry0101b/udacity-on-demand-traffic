@@ -42,8 +42,9 @@ void BUTTON_INT0_init(void)
 	DIO_write(PIN_PORT_D, PIN2, PIN_STATUS_LOW);
 	
 	// Set interrupt mode on INT0 to falling edge -when the button is released-
-	// NOTE: we are `OR`ing with the value of MCUCR avoiding changes on other bits.
-	MCUCR |= (1 << ISC01) | (0 << ISC00);
+	// NOTE: we are setting bits individually avoiding modifying other state saved in the register.
+	SET_BIT(MCUCR, ISC01);
+	CLR_BIT(MCUCR, ISC00);
 	
 	// Enable INT0
 	SET_BIT(GICR, INT0);
