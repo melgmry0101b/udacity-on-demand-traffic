@@ -20,6 +20,7 @@
 /************************************************************************/
 /* Here we include our standard library stuff                           */
 /************************************************************************/
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <math.h>

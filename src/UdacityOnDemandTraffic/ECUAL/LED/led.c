@@ -47,13 +47,16 @@ void LED_toggle(PIN_PORT port, uint8_t pin)
 // =======================================
 // Blink LED.
 // =======================================
-void LED_blink(PIN_PORT port, uint8_t pin, uint16_t cycle_ms, uint16_t cycles)
+void LED_blink(PIN_PORT port, uint8_t pin, uint16_t cycle_ms, uint16_t cycles, LED_BLINK_CANCELLATION_CALLBACK cancellationCallback)
 {
 	if (cycles == 0) { return; }
 	if (cycle_ms == 0) { return; }
 	
 	while (cycles-- > 0)
 	{
+		// Check if cancellation requested.
+		if (cancellationCallback && (*cancellationCallback)()) { break; }
+		
 		LED_toggle(port, pin);
 		sleep(cycle_ms);	
 	}

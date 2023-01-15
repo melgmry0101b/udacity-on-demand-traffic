@@ -9,6 +9,12 @@
 #define LED_H_
 
 /************************************************************************/
+/* Types                                                                */
+/************************************************************************/
+
+typedef bool (*LED_BLINK_CANCELLATION_CALLBACK)(void);
+
+/************************************************************************/
 /* LED Methods                                                          */
 /************************************************************************/
 
@@ -35,6 +41,6 @@ void LED_toggle(PIN_PORT port, uint8_t pin);
 // =======================================
 // Blink LED.
 // =======================================
-void LED_blink(PIN_PORT port, uint8_t pin, uint16_t cycle_ms, uint16_t cycles);
+void LED_blink(PIN_PORT port, uint8_t pin, uint16_t cycle_ms, uint16_t cycles, LED_BLINK_CANCELLATION_CALLBACK cancellationCallback);
 
 #endif /* LED_H_ */
