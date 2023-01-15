@@ -36,10 +36,10 @@ ISR(INT0_vect)
 void BUTTON_INT0_init(void)
 {
 	// Set INT0 pin which is PIN2 on PORTD to input
-	DIO_init(DDRD, DDRD2, PIN_MODE_IN);
+	DIO_init(PIN_PORT_D, PIN2, PIN_MODE_IN);
 	
 	// Set the pin to pull down
-	DIO_write(PORTD, PORTD2, PIN_STATUS_LOW);
+	DIO_write(PIN_PORT_D, PIN2, PIN_STATUS_LOW);
 	
 	// Set interrupt mode on INT0 to falling edge -when the button is released-
 	// NOTE: we are `OR`ing with the value of MCUCR avoiding changes on other bits.

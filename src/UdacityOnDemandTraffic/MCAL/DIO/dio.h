@@ -8,6 +8,10 @@
 #ifndef DIO_H_
 #define DIO_H_
 
+/************************************************************************/
+/* Types                                                                */
+/************************************************************************/
+
 typedef enum _PIN_MODE
 {
 	PIN_MODE_IN,
@@ -20,6 +24,14 @@ typedef enum _PIN_STATUS
 	PIN_STATUS_HIGH
 } PIN_STATUS;
 
+typedef enum _PIN_PORT
+{
+	PIN_PORT_A,
+	PIN_PORT_B,
+	PIN_PORT_C,
+	PIN_PORT_D
+} PIN_PORT;
+
 /************************************************************************/
 /* DIO Methods                                                          */
 /************************************************************************/
@@ -27,21 +39,21 @@ typedef enum _PIN_STATUS
 // =======================================
 // Initialize a pin setting its mode.
 // =======================================
-void DIO_init(uint8_t port, uint8_t pin, PIN_MODE mode);
+void DIO_init(PIN_PORT port, uint8_t pin, PIN_MODE mode);
 
 // =======================================
 // Read pin's status.
 // =======================================
-PIN_STATUS DIO_read(uint8_t port, uint8_t pin);
+PIN_STATUS DIO_read(PIN_PORT port, uint8_t pin);
 
 // =======================================
 // Write to pin setting its status.
 // =======================================
-void DIO_write(uint8_t port, uint8_t pin, PIN_STATUS status);
+void DIO_write(PIN_PORT port, uint8_t pin, PIN_STATUS status);
 
 // =======================================
 // Toggle pin's status.
 // =======================================
-void DIO_toggle(uint8_t port, uint8_t pin);
+void DIO_toggle(PIN_PORT port, uint8_t pin);
 
 #endif /* DIO_H_ */
