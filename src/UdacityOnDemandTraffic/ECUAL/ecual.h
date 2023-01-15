@@ -8,11 +8,6 @@
 #ifndef ECUAL_H_
 #define ECUAL_H_
 
-/************************************************************************/
-/* Including "Microcontroller Abstraction Layer"                        */
-/************************************************************************/
-#include "../MCAL/mcal.h"
-
 #include "LED/led.h"
 #include "Sleep/sleep.h"
 #include "Button/button.h"

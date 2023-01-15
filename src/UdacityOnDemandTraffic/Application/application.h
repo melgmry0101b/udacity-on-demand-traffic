@@ -8,9 +8,5 @@
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
 
-/************************************************************************/
-/* Including "Electronic Unit Abstraction Layer"                        */
-/************************************************************************/
-#include "../ECUAL/ecual.h"
 
 #endif /* APPLICATION_H_ */

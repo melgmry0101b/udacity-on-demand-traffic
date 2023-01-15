@@ -34,5 +34,16 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/sleep.h>
+
+/************************************************************************/
+/* Including "Microcontroller Abstraction Layer"                        */
+/************************************************************************/
+#include "MCAL/mcal.h"
+
+/************************************************************************/
+/* Including "Electronic Unit Abstraction Layer"                        */
+/************************************************************************/
+#include "ECUAL/ecual.h"
 
 #endif /* FRAMEWORK_H_ */
