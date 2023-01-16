@@ -20,15 +20,16 @@ static BUTTON_CALLBACK g_buttonInt0Callback = NULL;
 
 ISR(INT0_vect)
 {
-	// Disable interrupts
+	// 1. Disable interrupts
 	cli();
 	
+	// 2. Call the callback if set
 	if (g_buttonInt0Callback)
 	{
 		(*g_buttonInt0Callback)();
 	}
 	
-	// Enable interrupts
+	// 3. Enable interrupts
 	sei();
 }
 
@@ -41,18 +42,18 @@ ISR(INT0_vect)
 // =======================================
 void BUTTON_INT0_init(void)
 {
-	// Set INT0 pin which is PIN2 on PORTD to input
+	// 1. Set INT0 pin which is PIN2 on PORTD to input
 	DIO_init(PIN_PORT_D, PIN2, PIN_MODE_IN);
 	
-	// Set the pin to pull down
+	// 2. Set the pin to pull down
 	DIO_write(PIN_PORT_D, PIN2, PIN_STATUS_LOW);
 	
-	// Set interrupt mode on INT0 to falling edge -when the button is released-
+	// 3. Set interrupt mode on INT0 to falling edge -when the button is released-
 	// NOTE: we are setting bits individually avoiding modifying other state saved in the register.
 	SET_BIT(MCUCR, ISC01);
 	CLR_BIT(MCUCR, ISC00);
 	
-	// Enable INT0
+	// 4. Enable INT0
 	SET_BIT(GICR, INT0);
 }
 
@@ -61,5 +62,6 @@ void BUTTON_INT0_init(void)
 // =======================================
 void BUTTON_INT0_set_callback(BUTTON_CALLBACK callback)
 {
+	// 1. Set the function pointer
 	g_buttonInt0Callback = callback;
 }

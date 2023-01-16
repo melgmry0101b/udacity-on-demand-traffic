@@ -47,7 +47,7 @@ static PEDS_MODE g_pedestrianMode = PEDS_MODE_DISABLED;
 
 void PedestrianButtonHandler(void)
 {
-	// set the pedestrian mode flag
+	// 1. set the pedestrian mode flag
 	if (g_pedestrianMode == PEDS_MODE_DISABLED)
 	{
 		g_pedestrianMode = PEDS_MODE_REQUESTED;
@@ -60,6 +60,8 @@ void PedestrianButtonHandler(void)
 
 static void TurnAllLedsOff(void)
 {
+	// 1. Turn all LEDs off.
+	
 	LED_off(LED_CARS_PORT, LED_CARS_GREEN_PIN);
 	LED_off(LED_CARS_PORT, LED_CARS_YELLOW_PIN);
 	LED_off(LED_CARS_PORT, LED_CARS_RED_PIN);
@@ -78,16 +80,16 @@ static void TurnAllLedsOff(void)
 // =======================================
 void APP_init(void)
 {
-	// Initialize sleep
+	// 1. Initialize sleep
 	sleep_init();
 	
-	// Initialize pedestrian button
+	// 2. Initialize pedestrian button
 	BUTTON_INT0_init();
 	
-	// Set the button interrupt callback
+	// 3. Set the button interrupt callback
 	BUTTON_INT0_set_callback(&PedestrianButtonHandler);
 	
-	// Initialize LEDs
+	// 4. Initialize LEDs
 	LED_init(LED_CARS_PORT, LED_CARS_GREEN_PIN);
 	LED_init(LED_CARS_PORT, LED_CARS_YELLOW_PIN);
 	LED_init(LED_CARS_PORT, LED_CARS_RED_PIN);
@@ -108,14 +110,14 @@ void APP_process(void)
 
 	sleepCycles = SLEEP_CYCLES_TOP;
 	
-	// If we are in pedestrian mode, don't change the state, the logic in switch will handle that
+	// 1. If we are in pedestrian mode, don't change the state, the logic in switch will handle that
 	if (g_pedestrianMode == PEDS_MODE_DISABLED)
 	{
-		// Go to the next state
+		// 2. Go to the next state
 		if (++g_appState > APP_STATE_YELLOW_MOVING_TO_GREEN_CARS) { g_appState = APP_STATE_GREEN_CARS; }
 	}
 
-	// Reset pedestrian mode if it has been handled
+	// 3. Reset pedestrian mode if it has been handled
 	if (g_pedestrianMode == PEDS_MODE_HANDLED)
 	{
 		g_pedestrianMode = PEDS_MODE_DISABLED;
@@ -123,14 +125,16 @@ void APP_process(void)
 	
 	switch (g_appState)
 	{
-	case APP_STATE_GREEN_CARS: // Green for cars, Red for pedestrians
+	case APP_STATE_GREEN_CARS: // 4. Green for cars, Red for pedestrians
+		// 5. set the cars to green and pedestrians to red.
 		LED_on(LED_CARS_PORT, LED_CARS_GREEN_PIN);
 		LED_on(LED_PEDS_PORT, LED_PEDS_RED_PIN);
-		// 5 seconds sleep.
+		// 5 seconds sleep = sleepCycles * SLEEP_CYCLE_DURATION.
 		while (sleepCycles-- > 0)
 		{
 			sleep(SLEEP_CYCLE_DURATION);
 			
+			// 6. Check if pedestrian mode has been requested
 			if (g_pedestrianMode == PEDS_MODE_REQUESTED)
 			{
 				g_pedestrianMode = PEDS_MODE_HANDLED;
@@ -140,15 +144,16 @@ void APP_process(void)
 		}
 		// Set next state
 		break;
-	case APP_STATE_YELLOW_MOVING_TO_RED_CARS: // Blinking Yellow for cars and pedestrians
+	case APP_STATE_YELLOW_MOVING_TO_RED_CARS: // 7. Blinking Yellow for cars and pedestrians
 	case APP_STATE_YELLOW_MOVING_TO_GREEN_CARS:
 		while (sleepCycles-- > 0)
 		{
+			// 8. Toggle the yellow LEDs for both sides every 250 ms as blinking
 			LED_toggle(LED_CARS_PORT, LED_CARS_YELLOW_PIN);
 			LED_toggle(LED_PEDS_PORT, LED_PEDS_YELLOW_PIN);
 			sleep(SLEEP_CYCLE_DURATION);
 			
-			// If requested during yellow, reset and move back to red
+			// 9. If requested during yellow, reset and move back to red
 			if (g_pedestrianMode == PEDS_MODE_REQUESTED)
 			{
 				g_pedestrianMode = PEDS_MODE_HANDLED;
@@ -157,7 +162,8 @@ void APP_process(void)
 			}
 		}
 		break;
-	case APP_STATE_RED_CARS: // Red for card, Green for pedestrians
+	case APP_STATE_RED_CARS: // 10. Red for card, Green for pedestrians
+		// 11. Set red for cars and green for pedestrians.
 		LED_on(LED_CARS_PORT, LED_CARS_RED_PIN);
 		LED_on(LED_PEDS_PORT, LED_PEDS_GREEN_PIN);
 		// 5 seconds sleep.
@@ -165,7 +171,7 @@ void APP_process(void)
 		{
 			sleep(SLEEP_CYCLE_DURATION);
 			
-			// Check if we entered pedestrian mode while the car red is on, reset the 5 seconds
+			// 12. Check if we entered pedestrian mode while the car red is on, reset the 5 seconds
 			if (g_pedestrianMode == PEDS_MODE_REQUESTED)
 			{
 				g_pedestrianMode = PEDS_MODE_HANDLED;

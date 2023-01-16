@@ -8,20 +8,23 @@
 #include "framework.h"
 #include "Application/application.h"
 
+// NOTE: uncomment this line to be able to use the test main.
 // #define TEST_MODE
 
 #ifndef TEST_MODE
 
 int main(void)
 {
+	// 1. Initialize application
 	APP_init();
 	
-	// Enable interrupts for the processing.
+	// 2. Enable interrupts
 	sei();
 	
-    /* Replace with your application code */
+    // 3. Enter the application loop
     while (1)
     {
+		// 4. Call application processing
 		APP_process();
     }
 }

@@ -13,6 +13,7 @@
 // =======================================
 void DIO_init(PIN_PORT port, uint8_t pin, PIN_MODE mode)
 {
+	// 1. Check for requested port, and if mode is `IN` clear the corresponding bit on DDRx, else set the bit.
 	switch (port)
 	{
 	case PIN_PORT_A:
@@ -35,6 +36,7 @@ void DIO_init(PIN_PORT port, uint8_t pin, PIN_MODE mode)
 // =======================================
 PIN_STATUS DIO_read(PIN_PORT port, uint8_t pin)
 {
+	// 1. Check the port then read the corresponding bit on PINx
 	switch (port)
 	{
 	case PIN_PORT_A:
@@ -56,6 +58,7 @@ PIN_STATUS DIO_read(PIN_PORT port, uint8_t pin)
 // =======================================
 void DIO_write(PIN_PORT port, uint8_t pin, PIN_STATUS status)
 {
+	// 1. Check the port and clear the corresponding bit on PORTx if low is requested, otherwise set the bit.
 	switch (port)
 	{
 	case PIN_PORT_A:
@@ -78,6 +81,7 @@ void DIO_write(PIN_PORT port, uint8_t pin, PIN_STATUS status)
 // =======================================
 void DIO_toggle(PIN_PORT port, uint8_t pin)
 {
+	// 1. Check the requested port and toggle the corresponding bit on PORTx
 	switch (port)
 	{
 	case PIN_PORT_A:
