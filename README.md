@@ -11,7 +11,7 @@ Rubric Videos
 - [🎥 System Design (6:35)](./docs/vids/1_vid_system_design.mp4)
 - [🎥 Development Environment (4:39)](./docs/vids/2_vid_dev_env.mp4)
 - [🎥 Application Implementation (19:11, Drivers testing starts @ 14:25)](./docs/vids/3_vid_implement_app.mp4)
-- [🎥 Application User Stories()]
+- [🎥 Application User Stories (4:28)](./docs/vids/4_vid_test_user_cases.mp4)
 
 System Description
 ------------------
