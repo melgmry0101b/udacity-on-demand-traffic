@@ -169,6 +169,7 @@ void APP_process(void)
 			if (g_pedestrianMode == PEDS_MODE_REQUESTED)
 			{
 				g_pedestrianMode = PEDS_MODE_HANDLED;
+				g_appState = APP_STATE_YELLOW_MOVING_TO_GREEN_CARS; // Set the next app state
 				sleepCycles = SLEEP_CYCLES_TOP;
 			}
 		}
