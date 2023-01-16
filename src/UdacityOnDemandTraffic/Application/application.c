@@ -157,7 +157,7 @@ void APP_process(void)
 			if (g_pedestrianMode == PEDS_MODE_REQUESTED)
 			{
 				g_pedestrianMode = PEDS_MODE_HANDLED;
-				g_appState = APP_STATE_YELLOW_MOVING_TO_RED_CARS; // Set the next app state to be yellow moving to red
+				g_appState = APP_STATE_RED_CARS; // Set the next app state to be red for cars
 				sleepCycles = SLEEP_CYCLES_TOP;
 			}
 		}
