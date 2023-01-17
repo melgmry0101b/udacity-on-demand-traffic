@@ -8,6 +8,9 @@
 #ifndef FRAMEWORK_H_
 #define FRAMEWORK_H_
 
+// NOTE: uncomment this line to be able to use the test main.
+// #define TEST_MODE
+
 /************************************************************************/
 /* Bit manipulation macros                                              */
 /************************************************************************/

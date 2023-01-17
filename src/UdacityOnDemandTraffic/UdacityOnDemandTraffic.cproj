@@ -183,6 +183,9 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="main.test.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MCAL\DIO\dio.c">
       <SubType>compile</SubType>
     </Compile>
