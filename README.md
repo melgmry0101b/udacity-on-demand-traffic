@@ -5,6 +5,8 @@ This repository contains the source tree for a project required by Udacity's Emb
 
 The source is built using `Microchip Studio 7 (Version: 7.0.2594 - )`.
 
+View to this readme as a PDF from [here](./docs/project_description.pdf).
+
 Rubric Videos
 -------------
 
