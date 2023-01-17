@@ -39,13 +39,27 @@
 #include <avr/sleep.h>
 
 /************************************************************************/
-/* Including "Microcontroller Abstraction Layer"                        */
+/* Types                                                                */
 /************************************************************************/
-#include "MCAL/mcal.h"
 
-/************************************************************************/
-/* Including "Electronic Unit Abstraction Layer"                        */
-/************************************************************************/
-#include "ECUAL/ecual.h"
+typedef enum _PIN_MODE
+{
+	PIN_MODE_IN,
+	PIN_MODE_OUT
+} PIN_MODE;
+
+typedef enum _PIN_STATUS
+{
+	PIN_STATUS_LOW,
+	PIN_STATUS_HIGH
+} PIN_STATUS;
+
+typedef enum _PIN_PORT
+{
+	PIN_PORT_A,
+	PIN_PORT_B,
+	PIN_PORT_C,
+	PIN_PORT_D
+} PIN_PORT;
 
 #endif /* FRAMEWORK_H_ */

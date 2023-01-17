@@ -9,30 +9,6 @@
 #define DIO_H_
 
 /************************************************************************/
-/* Types                                                                */
-/************************************************************************/
-
-typedef enum _PIN_MODE
-{
-	PIN_MODE_IN,
-	PIN_MODE_OUT
-} PIN_MODE;
-
-typedef enum _PIN_STATUS
-{
-	PIN_STATUS_LOW,
-	PIN_STATUS_HIGH
-} PIN_STATUS;
-
-typedef enum _PIN_PORT
-{
-	PIN_PORT_A,
-	PIN_PORT_B,
-	PIN_PORT_C,
-	PIN_PORT_D
-} PIN_PORT;
-
-/************************************************************************/
 /* DIO Methods                                                          */
 /************************************************************************/
 

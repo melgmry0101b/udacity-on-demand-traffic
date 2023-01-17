@@ -6,6 +6,7 @@
  */ 
 
 #include "../framework.h"
+#include "../ECUAL/ecual.h"
 #include "application.h"
 
 /************************************************************************/
