@@ -5,7 +5,7 @@ This repository contains the source tree for a project required by Udacity's Emb
 
 The source is built using `Microchip Studio 7 (Version: 7.0.2594 - )`.
 
-View to this readme as a PDF from [here](./docs/project_description.pdf).
+View this readme as a PDF from [here](./docs/project_description.pdf).
 
 Rubric Videos
 -------------
@@ -27,6 +27,11 @@ System Design
 The system uses `ATmega32` microcontroller as the embedded brain. We have three major layers on-top of the microcontroller: the microcontroller abstraction layer (MCAL), the electronic unit abstraction layer (ECUAL), and the application. Our MCAL has two drivers: the digital input/output driver (DIO), and the timer diver. The ECUAL has three higher-level drivers: the LED driver, the sleep driver, and the button driver. Our system embraces SOLID principles preventing higher levels from direct communication with any lower level other than the one directly below.
 
 ![System Design](./docs/imgs/SystemDesign.png)
+
+System Constraints
+------------------
+
+One major constraint of the current implementation is that the user can put the system into a loop between red light for cars and blinking yellow. If the user pressed the pedestrian button while the system is blinking yellow going into the green light for cars, the system will change course and return to the red light for cars. The user can do this each time the lights are yellow. This "flaw" can be mitigated by extending the pedestrian mode to cover two processing cycles so that the system doesn't register another press in this period. Other constraints include: if the user pressed the button for very short time, the system may not be able to register it by being into an ISR or couldn't sense the change in voltage. The system doesn't have specific constraints regarding long or double presses.
 
 System Flowchart
 ----------------
